@@ -34,8 +34,12 @@ function populateTextarea() {
 
     if (savedMessage) {
         const parsMessage = JSON.parse(savedMessage);
-        refs.input.value = parsMessage.email;
-        refs.textarea.value = parsMessage.message; 
+        // resolve 'undefined' problem:
+        if (parsMessage.email) {
+            refs.input.value = parsMessage.email;
+        }
+        if (parsMessage.message) {
+            refs.textarea.value = parsMessage.message; 
+        }
     }
 }
-
